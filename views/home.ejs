@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Home Page</title>
+        <!--bootstrap-->
+        <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css"/>
+        <script href="/libs/bootstrap.min.js"></script>
+        <!--css-->
+        <link rel="stylesheet" type="text/css" href="/css/style.css"/>
+        <!--Angular-->
+        <script src="/libs/angular.js"></script>
+        <!--D3-->
+        <script src="/libs/d3.min.js"></script>
+    </head>
+    <body ng-app="myApp">
+        <h1>Hello World</h1>
+        
+        <div class="container" ng-controller="BaseController as base">
+            <div class="row" >
+                
+                <!--Angular table Loading data from 2015-->
+                    <table class="table table-striped">
+                      <thead>
+                        <tr>
+                          <th>Name</th>
+                          <th>Salary</th>
+                          <th>Department</th>
+                          <th>Title</th>
+                          <th>Classification</th>
+                        </tr>
+                      </thead>
+                      <tbody ng-repeat= "salary in base.salary_data_2015">
+                        <tr>
+                          <td>{{ salary.Name }}</td>
+                          <td>{{ salary.Salary }}</td>
+                          <td>{{ salary.Department }}</td>
+                          <td>{{ salary.Position }}</td>
+                          <td>{{ salary.Classification }}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+            </div>
+        </div>
+        
+        <script src="/js/app.js"></script>
+    </body>
+</html>
