@@ -58,11 +58,11 @@
                 </select>
                 
                 <!--Angular table Loading data from selector-->
-                    <table class="table table-striped" onchange="makeTable()">
+                    <table class="table table-striped" >
                       <thead>
                         <tr>
                           <th>Name
-                            <span class="glyphicon glyphicon-sort" ng-click="base.toggleIt('')"></span>
+                            <span class="glyphicon glyphicon-sort" ng-click="base.toggleIt('Name')"></span>
                           </th>
                           <th>Salary
                           </th>
@@ -72,10 +72,10 @@
                           <th>Date</th>
                         </tr>
                       </thead>
-                      <tbody ng-repeat= "salary in base.table_2015 | filter: search | limitTo: 25 | orderBy: base.column : base.toggle">
+                      <tbody ng-repeat= "salary in base.data | filter: search | orderBy: base.column : base.toggle | limitTo: 25">
                         <tr>
                           <td>{{ salary.FULL_NAME }}</td>
-                          <td>{{ salary.BASE_SALARY }}</td>
+                          <td>{{ salary.BASE_SALARY | currency:"$" }}</td>
                           <td>{{ salary.DEPT_DESCR }}</td>
                           <td>{{ salary.JOB_DESCR }}</td>
                           <td>{{ salary.EMPL_TYPE }}</td>
