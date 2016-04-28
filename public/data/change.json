@@ -1,0 +1,57 @@
+[
+    {
+        "postion": "avg_faculty",
+        "percent": "41"
+    },
+    {
+        "postion": "med_faculty",
+        "percent": "41"
+    },
+    {
+        "postion": "inflation",
+        "percent": "38.3"
+    },
+    {
+        "postion": "in_tuition",
+        "percent": "201"
+    },
+     {
+        "postion": "out_tuition",
+        "percent": "203"
+    },
+    {
+        "postion": "chancelor",
+        "percent": "124"
+    },
+    {
+        "postion": "athletic_dirctor",
+        "percent": "263"
+    },
+    {
+        "postion": "finance",
+        "percent": "49"
+    },
+    {
+        "postion": "provost",
+        "percent": "138"
+    },
+    {
+        "postion": "development",
+        "percent": "95"
+    },
+    {
+        "postion": "student_affairs",
+        "percent": "128"
+    },
+     {
+        "postion": "info_tech",
+        "percent": "85"
+    },
+     {
+        "postion": "research",
+        "percent": "46"
+    }
+    
+    
+    
+]
