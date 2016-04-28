@@ -62,6 +62,210 @@ var app = angular.module('myApp', [ ]);
             console.log("Error");
         })
         }
+        
+        else if (selectYear.options[selectYear.selectedIndex].value === "data-2013" ) {
+            
+        
+        //loads 2014 data
+        $http.get('../data/table_2013.json')
+        .success(function(data) {
+            _this.data = data;
+            console.log(data);
+            //return data
+        })
+        .error(function(msg) {
+            console.log("Error");
+        })
+        }
+        
+        else if (selectYear.options[selectYear.selectedIndex].value === "data-2012" ) {
+            
+        
+        //loads 2014 data
+        $http.get('../data/table_2012.json')
+        .success(function(data) {
+            _this.data = data;
+            console.log(data);
+            //return data
+        })
+        .error(function(msg) {
+            console.log("Error");
+        })
+        }
+        
+        else if (selectYear.options[selectYear.selectedIndex].value === "data-2011" ) {
+            
+        
+        //loads 2014 data
+        $http.get('../data/table_2011.json')
+        .success(function(data) {
+            _this.data = data;
+            console.log(data);
+            //return data
+        })
+        .error(function(msg) {
+            console.log("Error");
+        })
+        }
+        
+        else if (selectYear.options[selectYear.selectedIndex].value === "data-2010" ) {
+            
+        
+        //loads 2014 data
+        $http.get('../data/table_2010.json')
+        .success(function(data) {
+            _this.data = data;
+            console.log(data);
+            //return data
+        })
+        .error(function(msg) {
+            console.log("Error");
+        })
+        }
+        
+        else if (selectYear.options[selectYear.selectedIndex].value === "data-2009" ) {
+            
+        
+        //loads 2014 data
+        $http.get('../data/table_2009.json')
+        .success(function(data) {
+            _this.data = data;
+            console.log(data);
+            //return data
+        })
+        .error(function(msg) {
+            console.log("Error");
+        })
+        }
+        
+        else if (selectYear.options[selectYear.selectedIndex].value === "data-2008" ) {
+            
+        
+        //loads 2014 data
+        $http.get('../data/table_2008.json')
+        .success(function(data) {
+            _this.data = data;
+            console.log(data);
+            //return data
+        })
+        .error(function(msg) {
+            console.log("Error");
+        })
+        }
+        
+        else if (selectYear.options[selectYear.selectedIndex].value === "data-2007" ) {
+            
+        
+        //loads 2014 data
+        $http.get('../data/table_2007.json')
+        .success(function(data) {
+            _this.data = data;
+            console.log(data);
+            //return data
+        })
+        .error(function(msg) {
+            console.log("Error");
+        })
+        }
+        else if (selectYear.options[selectYear.selectedIndex].value === "data-2006" ) {
+            
+        
+        //loads 2014 data
+        $http.get('../data/table_2006.json')
+        .success(function(data) {
+            _this.data = data;
+            console.log(data);
+            //return data
+        })
+        .error(function(msg) {
+            console.log("Error");
+        })
+        }
+        else if (selectYear.options[selectYear.selectedIndex].value === "data-2005" ) {
+            
+        
+        //loads 2014 data
+        $http.get('../data/table_2005.json')
+        .success(function(data) {
+            _this.data = data;
+            console.log(data);
+            //return data
+        })
+        .error(function(msg) {
+            console.log("Error");
+        })
+        }
+        else if (selectYear.options[selectYear.selectedIndex].value === "data-2004" ) {
+            
+        
+        //loads 2014 data
+        $http.get('../data/table_2004.json')
+        .success(function(data) {
+            _this.data = data;
+            console.log(data);
+            //return data
+        })
+        .error(function(msg) {
+            console.log("Error");
+        })
+        }
+        else if (selectYear.options[selectYear.selectedIndex].value === "data-2003" ) {
+            
+        
+        //loads 2014 data
+        $http.get('../data/table_2003.json')
+        .success(function(data) {
+            _this.data = data;
+            console.log(data);
+            //return data
+        })
+        .error(function(msg) {
+            console.log("Error");
+        })
+        }
+        else if (selectYear.options[selectYear.selectedIndex].value === "data-2002" ) {
+            
+        
+        //loads 2014 data
+        $http.get('../data/table_2002.json')
+        .success(function(data) {
+            _this.data = data;
+            console.log(data);
+            //return data
+        })
+        .error(function(msg) {
+            console.log("Error");
+        })
+        }
+        else if (selectYear.options[selectYear.selectedIndex].value === "data-2001" ) {
+            
+        
+        //loads 2014 data
+        $http.get('../data/table_2001.json')
+        .success(function(data) {
+            _this.data = data;
+            console.log(data);
+            //return data
+        })
+        .error(function(msg) {
+            console.log("Error");
+        })
+        }
+        else {
+            
+        
+        //loads 2014 data
+        $http.get('../data/table_2000.json')
+        .success(function(data) {
+            _this.data = data;
+            console.log(data);
+            //return data
+        })
+        .error(function(msg) {
+            console.log("Error");
+        })
+        }
+        
     };
     
     //toggle function
