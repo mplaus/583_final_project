@@ -64,8 +64,8 @@ var xAxis = d3.svg.axis()
 
 var yAxis = d3.svg.axis()
     .scale(y)
-    .orient("left")
-    .innerTickSize(-width);
+    .orient("left");
+    //.innerTickSize(-width);
 
 var line = d3.svg.line()
     .x(function(d) { return x(d.year); })
@@ -74,10 +74,6 @@ var line = d3.svg.line()
 var line2 = d3.svg.line()
     .x(function(d) { return x(d.year); })
     .y(function(d) { return y(d.median_faculty); }); // Line tracking Median Faculty Salary
-    
-var line3 = d3.svg.line()
-    .x(function(d) { return x(d.year); })
-    .y(function(d) { return y(d.athletic_director); }); // Line tracking Athletic Director Salary
     
 var line4 = d3.svg.line()
     .x(function(d) { return x(d.year); })
@@ -134,11 +130,6 @@ svg.append("rect")
         .attr("class", "line")
         .style("stroke", "black")
         .attr("d", line2(data));
-        
-  svg.append("path")      // Add the line3 path.
-        .attr("class", "line")
-        .style("stroke", "red")
-        .attr("d", line3(data));
  
   svg.append("path")      // Add the line4 path.
         .attr("class", "line")
@@ -151,7 +142,7 @@ svg.append("rect")
         .style("stroke", "green")
         .attr("d", line5(data))
         
-  // Add the scatterplot
+  /*// Add the scatterplot
     svg.selectAll("dot")
         .data(data)
       .enter().append("circle")
@@ -185,7 +176,7 @@ svg.append("rect")
       .enter().append("circle")
         .attr("r", 3.5)
         .attr("cx", function(d) { return x(d.year); })
-        .attr("cy", function(d) { return y(d.out_state_tuition); });
+        .attr("cy", function(d) { return y(d.out_state_tuition); });*/
         
         // mouseover
         var focus = svg.append("g")
@@ -199,24 +190,6 @@ svg.append("rect")
             .attr("x", 9)
             .attr("dy", ".35em")
             .style("fill", "gray");
-      
-        /*svg.append("rect")
-            .attr("class", "overlay")
-            .attr("width", width)
-            .attr("height", height)
-            .on("mouseover", function() { focus.style("display", null); })
-            .on("mouseout", function() { focus.style("display", "none"); })
-            .on("mousemove", mousemove1);
-      
-        function mousemove1() {
-          var x0 = x.invert(d3.mouse(this)[0]),
-              i = bisectDate(data, x0, 1),
-              d0 = data[i - 1],
-              d1 = data[i],
-              d = x0 - d0.year > d1.year - x0 ? d1 : d0;
-          focus.attr("transform", "translate(" + x(d.year) + "," + y(d.out_state_tuition) + ")");
-          focus.select("text").text(d.out_state_tuition);
-  }*/
   
 }
     

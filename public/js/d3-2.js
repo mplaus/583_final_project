@@ -1,81 +1,75 @@
-var margin = {top: 20, right: 20, bottom: 30, left: 40};
-var width = 1000 - margin.left - margin.right;
-var height = 700 - margin.top - margin.bottom;
+var margin = {top: 20, right: 20, bottom: 50, left: 40},
+    width = 960 - margin.left - margin.right,
+    height = 600 - margin.top - margin.bottom;
 
-var svg = d3.select('.container').append('svg')
-    .attr('width', width + margin.left + margin.right)
-    .attr('height', height + margin.top + margin.bottom)
-    .append('g')
-    .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
-    //transform: translate(40, 20);
+var x = d3.scale.ordinal()
+    .rangeRoundBands([0, width], .1);
 
-var scaleX = d3.scale.ordinal()
-    .rangeRoundBands([0, width], 0.2);
-
-var scaleY = d3.scale.linear()
+var y = d3.scale.linear()
     .range([height, 0]);
 
 var xAxis = d3.svg.axis()
-    .scale(scaleX)
-    .orient('bottom');
+    .scale(x)
+    .orient("bottom");
 
 var yAxis = d3.svg.axis()
-    .scale(scaleY)
-    .orient('left')
-    .ticks(15, '%');
+    .scale(y)
+    .orient("left")
+    .ticks(10, "%");
+    
+var tip = d3.tip()
+  .attr('class', 'd3-tip')
+  .offset([-10, 0])
+  .html(function(d) {
+    return "<strong>" + d.position + "</strong> <span style='color:red'>" + d.percent * 100 + "%" + "</span>";
+  })
 
-d3.json("../data/change.json", function(err, data) {
-    if (err) throw error;
+var svg = d3.select(".graph2").append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+    
+    //set graph backgoround color   
+svg.append("rect")
+    .attr("width", "94%")
+    .attr("height", "88.5%")
+    .attr("fill", "white");
+    
+svg.call(tip);
 
-   /*data.forEach(function(d) {
-        for(var i in d) {
-            d[i] = Number(d[i].replace(/[^0-9\.]+/g,""));
-            if (i === "year") {
-                var tmp = new Date();
-                d[i] = tmp.setYear(d[i]);
-            }
-        }
-    }); */
+d3.csv("../data/change.csv", function(error, data) {
+  if (error) throw error;
 
-    console.log(data);
-    console.log("hi");
+  x.domain(data.map(function(d) { return d.position; }));
+  y.domain([0, d3.max(data, function(d) { return d.percent; })]);
 
-    scaleX.domain(data.map(function(d) { return d.posititon }));
-    scaleY.domain([0, d3.max(data, function(d) { return d.percent; }) + 0.1]);
+  svg.append("g")
+      .attr("class", "x axis")
+      .attr("transform", "translate(0," + height + ")")
+      .call(xAxis);
 
-    svg.append('g')
-        .attr('class', 'x axis')
-        .attr('transform', 'translate(0, ' + height + ')')
-        .call(xAxis);
+  svg.append("g")
+      .attr("class", "y axis")
+      .call(yAxis)
+    .append("text")
+      .attr("transform", "rotate(-90)")
+      .attr("y", 6)
+      .attr("dy", ".71em")
+      .style("text-anchor", "end")
+      .text("Percent Change since the year 2000");
 
-    svg.append('g')
-        .attr('class', 'y axis')
-        .call(yAxis);
+  svg.selectAll(".bar")
+      .data(data)
+    .enter().append("rect")
+      .attr("class", "bar")
+      .attr("x", function(d) { return x(d.position); })
+      .attr("width", x.rangeBand())
+      .attr("y", function(d) { return y(d.percent); })
+      .attr("height", function(d) { return height - y(d.percent); })
+      .on('mouseover', tip.show)
+      .on('mouseout', tip.hide);
 
-    svg.selectAll('rect')
-        .data(data)
-        .enter()
-        .append('rect')
-            .attr('class', 'bar')
-            .attr('x', function(d) { return scaleX(d.position); })
-            .attr('width', scaleX.rangeBand())
-            .attr('y', function(d) { return scaleY(d.percent); })
-            .attr('height', function(d) { return height - scaleY(d.percent); })
-            .attr('fill', '#DE352E')
-            .on('mouseover', function(d) {
-                d3.select('.tooltip')
-                    .html(d.team + "<br />" + Math.round(d.percent * 100) + "%")
-                    .style('opacity', 1);
-            })
-            .on('mouseout', function(d) {
-                d3.select('.tooltip')
-                    .style('opacity', 0);
-            })
-            .on('mousemove', function(d) {
-                console.log(d3.event);
-                d3.select('.tooltip')
-                    .style('left', (d3.event.clientX + 20) + 'px')
-                    .style('top', (d3.event.clientY) + 'px');
-            });
-
+    
 });
+
