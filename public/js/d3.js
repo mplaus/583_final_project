@@ -74,7 +74,7 @@ var tip = d3.tip()
   .attr('class', 'd3-tip')
   .offset([-10, 0])
   .html(function(d) {
-    return "<strong>" + d.position + "</strong> <span style='color:red'>" + d.percent * 100 + "%" + "</span>";
+    return "<strong>" + d.year + "</strong> <span style='color:red'>" + d.average_faculty * 100 + "%" + "</span>";
   })
 
 var line = d3.svg.line()

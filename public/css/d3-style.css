@@ -1,6 +1,11 @@
 body{
   background-color: #7BAFD4;
 }
+
+circle {
+  opacity: 0.5;
+}
+
 h3 {
   font-size: 30px;
 }
@@ -14,70 +19,28 @@ text {
   font: 13px lato;
 }
 
-/*.axis path,
+.axis {
+  font: 10px sans-serif;
+}
+
+.axis path,
 .axis line {
   fill: none;
-  stroke: #4A5054;
-  stroke-width: 3px;
+  stroke: #000;
   shape-rendering: crispEdges;
-  
-}*/
-
-.x.axis path {
-  
 }
 
-.line {
-  fill: none;
-  stroke: #7BAFD4;
-  stroke-width: 1.5px;
+.bar:hover {
+    fill: yellow;
+    transition: all 0.5s;
+    cursor: pointer;
+}
+.bar {
+  fill: #7BAFD4;
 }
 
-.line:hover {
-    transition: all  0.0s;
-    stroke-width: 3px;
-    stroke:#7BAFD;
-    
-}
-
-.tick line{
-    opacity: 0.2;
-  }
-
-circle {
-  opacity: 0.5;
-}
-
-.overlay {
-  fill: none;
-  pointer-events: all;
-}
-
-.focus circle {
-  fill: none;
-  stroke: steelblue;
-}
-
-.logo {
-  width: 150px;
-  height: auto;
-}
-
-.info{
-  font-family: lato;
-  font-size: 18px;
-}
-
-.legend{
-  border: solid 1px black;
-  margin-right: 5px;
-  padding: 5px;
-  background-color: white;
-}
-
-.loptions{
-  font-size: 12px;
-  
+.bar:hover {
+  fill: brown;
 }
 
 .boxes{
@@ -85,6 +48,13 @@ circle {
   height: 5px;
   margin-right: 5px;
 }
+
+.data-table {
+  background-color: white;
+  margin-right: 30px;
+  margin-top: 50px;
+}
+
 .d3-tip {
   line-height: 1;
   font-weight: bold;
@@ -113,39 +83,64 @@ circle {
   top: 100%;
   left: 0;
 }
-.bar:hover {
-    fill: yellow;
-    transition: all 0.5s;
-    cursor: pointer;
-}
-.bar {
-  fill: #7BAFD4;
-}
 
-.bar:hover {
-  fill: brown;
-}
-
-.axis {
-  font: 10px sans-serif;
-}
-
-.axis path,
-.axis line {
+.focus circle {
   fill: none;
-  stroke: #000;
-  shape-rendering: crispEdges;
+  stroke: steelblue;
 }
 
 .graph2 .x.axis text {
   display: none;
 }
 
-.data-table {
+.legend{
+  border: solid 1px black;
+  margin-right: 5px;
+  padding: 5px;
   background-color: white;
-  margin-right: 30px;
 }
 
-.data-table-top {
-  margin-top: 50px;
+.info{
+  font-family: lato;
+  font-size: 18px;
 }
+
+.input-sm{
+  margin-top: 30px;
+}
+
+.line {
+  fill: none;
+  stroke: #7BAFD4;
+  stroke-width: 1.5px;
+}
+
+.line:hover {
+    transition: all  0.0s;
+    stroke-width: 3px;
+    stroke: #7BAFD4;
+    
+}
+
+.logo {
+  width: 150px;
+  height: auto;
+}
+
+.loptions{
+  font-size: 12px;
+  
+}
+
+.my-search-bar {
+  margin-top: 30px;
+}
+
+.overlay {
+  fill: none;
+  pointer-events: all;
+}
+
+.tick line{
+    opacity: 0.2;
+  }
