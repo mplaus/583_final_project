@@ -15,21 +15,23 @@ d3.json("../data/salary_data.json", function(error, data) {
         }
     });
     
-     
+     //this is how user changes scale of y axis, menuSelector is the ID of graph selector in html
      var menuThing = document.getElementById("menuSelector");
     
+	//on document loading runs the menu select function which chooses y scale then generates the graph
      $( "#menuSelector" ).ready(function() {
       menuSelect(this.value);
       generateGraph();
     });
      
+	 //on selector change of menuSelector clears graph, selects y scale, and generates new graph
     $( "#menuSelector" ).change(function() {
       d3.select("svg").remove();
       menuSelect(this.value);
       generateGraph();
     });
     
-    
+    //function to choose y scale
     function menuSelect(value) {
         
   
@@ -42,6 +44,7 @@ d3.json("../data/salary_data.json", function(error, data) {
   
    }
    
+   //function to generate graph
  function generateGraph() {
   var margin = {top: 20, right: 20, bottom: 30, left: 50},
     width = 960 - margin.left - margin.right,
@@ -65,7 +68,6 @@ var xAxis = d3.svg.axis()
 var yAxis = d3.svg.axis()
     .scale(y)
     .orient("left");
-    //.innerTickSize(-width);
 
 var line = d3.svg.line()
     .x(function(d) { return x(d.year); })
@@ -97,7 +99,7 @@ svg.append("rect")
     .attr("width", "93%")
     .attr("height", "90%")
     .attr("fill", "white");
-    //code
+    
 //sets x and y axis
   x.domain(d3.extent(data, function(d) { return +d.year; }));
   y.domain(d3.extent([0, d3.max(data, function(d) { return d[menuThing.options[menuThing.selectedIndex].value];  } )]));
@@ -141,42 +143,6 @@ svg.append("rect")
         .attr("class", "line")
         .style("stroke", "green")
         .attr("d", line5(data))
-        
-  /*// Add the scatterplot
-    svg.selectAll("dot")
-        .data(data)
-      .enter().append("circle")
-        .attr("r", 3.5)
-        .attr("cx", function(d) { return x(d.year); })
-        .attr("cy", function(d) { return y(d.athletic_director); });
-        
-    svg.selectAll("dot")
-        .data(data)
-      .enter().append("circle")
-        .attr("r", 3.5)
-        .attr("cx", function(d) { return x(d.year); })
-        .attr("cy", function(d) { return y(d.average_faculty); });
-        
-    svg.selectAll("dot")
-        .data(data)
-      .enter().append("circle")
-        .attr("r", 3.5)
-        .attr("cx", function(d) { return x(d.year); })
-        .attr("cy", function(d) { return y(d.median_faculty); });
-        
-    svg.selectAll("dot")
-        .data(data)
-      .enter().append("circle")
-        .attr("r", 3.5)
-        .attr("cx", function(d) { return x(d.year); })
-        .attr("cy", function(d) { return y(d.in_state_tuition); });
-        
-    svg.selectAll("dot")
-        .data(data)
-      .enter().append("circle")
-        .attr("r", 3.5)
-        .attr("cx", function(d) { return x(d.year); })
-        .attr("cy", function(d) { return y(d.out_state_tuition); });*/
         
         // mouseover
         var focus = svg.append("g")
