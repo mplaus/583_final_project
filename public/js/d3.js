@@ -47,8 +47,8 @@ d3.json("../data/salary_data.json", function(error, data) {
    //function to generate graph
  function generateGraph() {
   var margin = {top: 20, right: 20, bottom: 30, left: 50},
-    width = 960 - margin.left - margin.right,
-    height = 500 - margin.top - margin.bottom;
+    width = 800 - margin.left - margin.right,
+    height = 400 - margin.top - margin.bottom;
 
 var parseDate = d3.time.format("%d-%b-%y").parse,
     bisectDate = d3.bisector(function(d) { return d.year; }).left,
@@ -68,6 +68,14 @@ var xAxis = d3.svg.axis()
 var yAxis = d3.svg.axis()
     .scale(y)
     .orient("left");
+	
+//on hover tool tip gives x and y values    
+var tip = d3.tip()
+  .attr('class', 'd3-tip')
+  .offset([-10, 0])
+  .html(function(d) {
+    return "<strong>" + d.position + "</strong> <span style='color:red'>" + d.percent * 100 + "%" + "</span>";
+  })
 
 var line = d3.svg.line()
     .x(function(d) { return x(d.year); })
@@ -93,11 +101,14 @@ var svg = d3.select(".graph1").append("svg")
     .attr("height", height + margin.top + margin.bottom)
     .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+	
+//calls tool tip   
+svg.call(tip);
 
 //set graph backgoround color   
 svg.append("rect")
-    .attr("width", "93%")
-    .attr("height", "90%")
+    .attr("width", "91.5%")
+    .attr("height", "87.5%")
     .attr("fill", "white");
     
 //sets x and y axis
@@ -130,32 +141,23 @@ svg.append("rect")
   
   svg.append("path")      // Add the line2 path.
         .attr("class", "line")
-        .style("stroke", "black")
+        .style("stroke", "#7BAFD4")
         .attr("d", line2(data));
  
   svg.append("path")      // Add the line4 path.
         .attr("class", "line")
-        .style("stroke", "blue")
+        .style("stroke", "#7BAFD4")
         .attr("d", line4(data));
         
         
   svg.append("path")      // Add the line5 path.
         .attr("class", "line")
-        .style("stroke", "green")
+        .style("stroke", "#7BAFD4")
         .attr("d", line5(data))
+		.on('mouseover', tip.show)
+        .on('mouseout', tip.hide);
         
-        // mouseover
-        var focus = svg.append("g")
-            .attr("class", "focus")
-            .style("display", "none");
-      
-        focus.append("circle")
-            .attr("r", 4.5);
-      
-        focus.append("text")
-            .attr("x", 9)
-            .attr("dy", ".35em")
-            .style("fill", "gray");
+       
   
 }
     

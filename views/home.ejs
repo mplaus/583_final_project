@@ -20,81 +20,97 @@
         
     </head>
     <body ng-app="myApp">
-        <h1>Hello World</h1>
-        
         <div class="container">
             <div class="row">
-                    <div class="col-md-3"></div>
-                     <div class="col-md-4">
-                        <p id="menu" class="menuchoice">Select series:
-                            <select id="menuSelector" class="form-control input-sm">
-                                <option value="average_faculty">View Faculty Salaries</option>
-                                <option value="out_state_tuition">View Tuition</option>
-                            </select>
-                        </p>
-                     </div>
-                     <div class="col-md-5"></div>
+                <h1>How have administrative salary changes affected UNC Chapel Hill?</h1>
+                <p>
+                     Some have <a href="http://www.nytimes.com/2015/04/05/opinion/sunday/the-real-reason-college-tuition-costs-so-much.html?_r=0">speculated</a> large increases in the size of university bureaucracies and increases in the salaries the administrators who run those bureaucracies are behind the steep increases.
+                </p>
+                <p>
+                    I tracked how tuition, the salaries of faculty memeber, and the salaries of high-level administrators changed from 2000-2016 to determine if there was any correlation at UNC Chapel Hill. Over this period, in-state tuition has increased by 201% and out-of-state tuition has increased by 203%. While the median salary of faculty members on campus increased only 41%.
+                </p>
+                <div class="col-md-3"></div>
+                    <div class="col-md-4">
+                    <p id="menu" class="menuchoice">Select series:
+                        <select id="menuSelector" class="form-control input-sm">
+                            <option value="average_faculty">View Faculty Salaries</option>
+                            <option value="out_state_tuition">View Tuition</option>
+                        </select>
+                    </p>
                 </div>
+                <div class="col-md-5"></div>
+            </div>
             <div class="row">
                     <div class="graph1"></div>
             </div>
             <div class="row">
-                    <div class="graph2"></div>
+                <div class="graph2"></div>
             </div>
             
-            <div class="row" ng-controller="BaseController as base">
-                
+            <div class="row data-table-top" ng-controller="BaseController as base">
+                <!--select table year-->
+                 <div class="col-md-1"></div>
+                <div class="col-md-3">
+                    <select id="selectYear" class="form-control input-sm">
+                        <option  value="data-2015">2015</option>
+                        <option  value="data-2014">2014</option>
+                        <option  value="data-2013">2013</option>
+                        <option  value="data-2012">2012</option>
+                        <option  value="data-2011">2011</option>
+                        <option  value="data-2010">2010</option>
+                        <option  value="data-2009">2009</option>
+                        <option  value="data-2008">2008</option>
+                        <option  value="data-2007">2007</option>
+                        <option  value="data-2006">2006</option>
+                        <option  value="data-2005">2005</option>
+                        <option  value="data-2004">2004</option>
+                        <option  value="data-2003">2003</option>
+                        <option  value="data-2002">2002</option>
+                        <option  value="data-2001">2001</option>
+                        <option  value="data-2000">2000</option>
+                    </select>
+                </div>
+                <div class="col-md-5"></div>
+                <div class="col-md-1">
                     <div class="input-group my-search-bar">
                         <input ng-model="search" type="text" class="form-control" placeholder="Search for the salary of UNC employees">
-                        
-                    </div>                
-                
-                <!--select table year-->
-                
-                <select id="selectYear" class="form-control input-sm">
-                    <option  value="data-2015">2015</option>
-                    <option  value="data-2014">2014</option>
-                    <option  value="data-2013">2013</option>
-                    <option  value="data-2012">2012</option>
-                    <option  value="data-2011">2011</option>
-                    <option  value="data-2010">2010</option>
-                    <option  value="data-2009">2009</option>
-                    <option  value="data-2008">2008</option>
-                    <option  value="data-2007">2007</option>
-                    <option  value="data-2006">2006</option>
-                    <option  value="data-2005">2005</option>
-                    <option  value="data-2004">2004</option>
-                    <option  value="data-2003">2003</option>
-                    <option  value="data-2002">2002</option>
-                    <option  value="data-2001">2001</option>
-                    <option  value="data-2000">2000</option>
-                </select>
+                    </div>
+                </div>
+                <div class="col-md-2"></div>
                 
                 <!--Angular table Loading data from selector-->
-                    <table class="table table-striped" >
-                      <thead>
-                        <tr>
-                          <th>Name
-                          </th>
-                          <th>Salary
-                          </th>
-                          <th>Department</th>
-                          <th>Title</th>
-                          <th>Classification</th>
-                          <th>Date</th>
-                        </tr>
-                      </thead>
-                      <tbody ng-repeat= "salary in base.data | filter: search | orderBy: base.column : base.toggle | limitTo: 25">
-                        <tr>
-                          <td>{{ salary.FULL_NAME }}</td>
-                          <td>{{ salary.BASE_SALARY | currency:"$" }}</td>
-                          <td>{{ salary.DEPT_DESCR }}</td>
-                          <td>{{ salary.JOB_DESCR }}</td>
-                          <td>{{ salary.EMPL_TYPE }}</td>
-                          <td>{{ salary.CALENDAR_DATE }}</td>
-                        </tr>
-                      </tbody>
-                    </table>
+                <div class="data-table">
+                    <div class="row">
+                        <div class="col-md-1"></div>
+                        <div class="col-md-10">
+                            <table class="table table-striped" >
+                              <thead>
+                                <tr>
+                                  <th>Name
+                                  </th>
+                                  <th>Salary
+                                  </th>
+                                  <th>Department</th>
+                                  <th>Title</th>
+                                  <th>Classification</th>
+                                  <th>Date</th>
+                                </tr>
+                              </thead>
+                                <tbody ng-repeat= "salary in base.data | filter: search | orderBy: base.column : base.toggle | limitTo: 15">
+                                    <tr>
+                                        <td>{{ salary.FULL_NAME }}</td>
+                                        <td>{{ salary.BASE_SALARY | currency:"$" }}</td>
+                                        <td>{{ salary.DEPT_DESCR }}</td>
+                                        <td>{{ salary.JOB_DESCR }}</td>
+                                        <td>{{ salary.EMPL_TYPE }}</td>
+                                        <td>{{ salary.CALENDAR_DATE }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                         <div class="col-md-1"></div>
+                    </div>
+                </div>
             </div>
         </div>
         

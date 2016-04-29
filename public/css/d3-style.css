@@ -29,14 +29,14 @@ text {
 
 .line {
   fill: none;
-  stroke: steelblue;
+  stroke: #7BAFD4;
   stroke-width: 1.5px;
 }
 
 .line:hover {
     transition: all  0.0s;
     stroke-width: 3px;
-    stroke:black;
+    stroke:#7BAFD;
     
 }
 
@@ -137,6 +137,15 @@ circle {
   shape-rendering: crispEdges;
 }
 
-.x.axis text {
+.graph2 .x.axis text {
   display: none;
+}
+
+.data-table {
+  background-color: white;
+  margin-right: 30px;
+}
+
+.data-table-top {
+  margin-top: 50px;
 }
